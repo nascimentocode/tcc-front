@@ -6,26 +6,27 @@
     "standard-jsx",
     "standard-react"
   ],
-  "plugins": [
-    "jsx-a11y"
-  ],
+  "plugins": ["jsx-a11y"],
   "rules": {
-    "comma-dangle": [
+    "quotes": [
       "error",
+      "single",
       {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "always-multiline"
+        "avoidEscape": true
       }
     ],
+    "jsx-quotes": ["error", "prefer-double"],
+    "semi": ["error", "always"],
+    "space-before-function-paren": "off",
     "no-undef": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-pascal-case": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["off", {
-      "ignoreRestSiblings": true
-    }]
+    "@typescript-eslint/no-unused-vars": [
+      "off",
+      {
+        "ignoreRestSiblings": true
+      }
+    ]
   }
 }
