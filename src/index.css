@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .title {
+    @apply font-montserrat text-5xl font-bold text-textPrimary;
+  }
+
+  .heading-h1 {
+    @apply font-montserrat text-4xl font-normal text-textPrimary;
+  }
+
+  .heading-h2 {
+    @apply font-montserrat text-4xl font-normal text-textPrimary;
+  }
+
+  .text-body-default {
+    @apply font-montserrat text-base font-normal text-textPrimary;
+  }
+
+  .text-body-bold {
+    @apply font-montserrat text-base font-bold text-textPrimary;
+  }
+}
