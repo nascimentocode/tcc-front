@@ -1,12 +1,16 @@
 import { Button } from '@/components-shared/Button';
 import { Input } from '@/components-shared/Input';
+import { AuthContext } from '@/contexts/AuthContext';
 import { useFormik } from 'formik';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
 import image from '../../assets/signUp-image.png';
+import { SignUpValidation } from './Validation';
 
 export function SignUp() {
   const navigate = useNavigate();
+
+  const { handleSignUp } = useContext(AuthContext);
 
   const formik = useFormik({
     initialValues: {
@@ -16,14 +20,10 @@ export function SignUp() {
       email: '',
       password: ''
     },
-    validationSchema: Yup.object({
-      name: Yup.string().required(),
-      lastName: Yup.string().required(),
-      user: Yup.string().required(),
-      email: Yup.string().email().required(),
-      password: Yup.string().required()
-    }),
-    onSubmit() {}
+    validationSchema: SignUpValidation,
+    onSubmit(values) {
+      handleSignUp(values.email, values.password);
+    }
   });
 
   const handleNavigateToLogin = () => navigate('/login');
@@ -41,9 +41,10 @@ export function SignUp() {
           className="flex w-full flex-col gap-8 p-10 md:w-2/3 md:p-0"
           onSubmit={formik.handleSubmit}
           noValidate
+          autoComplete="off"
         >
           <h1 className="title">Cadastre-se</h1>
-          <div className="flex justify-between gap-6">
+          <div className="flex flex-col justify-between gap-6 md:flex-row">
             <Input
               label="Nome"
               type="text"
@@ -70,7 +71,7 @@ export function SignUp() {
             />
           </div>
           <Input
-            label="Usuario"
+            label="Usuário"
             type="text"
             name="user"
             value={formik.values.user}

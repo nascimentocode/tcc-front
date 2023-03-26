@@ -1,9 +1,9 @@
 import { Button } from '@/components-shared/Button';
 import { Input } from '@/components-shared/Input';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import GoogleIcon from '@mui/icons-material/Google';
-import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
+import { AuthContext } from '@/contexts/AuthContext';
+import { GoogleOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useFormik } from 'formik';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import image from '../../assets/login-image.png';
@@ -11,16 +11,23 @@ import image from '../../assets/login-image.png';
 export function Login() {
   const navigate = useNavigate();
 
+  const { handleSignInCredentials, handleSignInGoogle } =
+    useContext(AuthContext);
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required(),
-      password: Yup.string().required()
+      email: Yup.string()
+        .email('E-mail inválido.')
+        .required('Preencha o E-mail.'),
+      password: Yup.string().required('Preencha o Senha.')
     }),
-    onSubmit() {}
+    onSubmit(values) {
+      handleSignInCredentials(values.email, values.password);
+    }
   });
 
   const handleNavigateToSignUp = () => navigate('/cadastrar');
@@ -38,11 +45,12 @@ export function Login() {
           className="flex flex-col gap-8 p-10 md:w-2/4 md:p-0"
           onSubmit={formik.handleSubmit}
           noValidate
+          autoComplete="off"
         >
           <h1 className="title">Login</h1>
           <Input
             label="Email"
-            prepend={<EmailOutlinedIcon />}
+            prepend={<MailOutlined />}
             placeholder="example@hotmail.com"
             type="email"
             name="email"
@@ -56,7 +64,7 @@ export function Login() {
           />
           <Input
             label="Senha"
-            prepend={<HttpsOutlinedIcon />}
+            prepend={<LockOutlined />}
             placeholder="********************"
             type="password"
             name="password"
@@ -87,8 +95,8 @@ export function Login() {
             <p className="text-body-default">Ou</p>
             <div className="h-[1px] w-full bg-textSecondary" />
           </div>
-          <Button type="button" variant="outlined">
-            <GoogleIcon />
+          <Button type="button" variant="outlined" onClick={handleSignInGoogle}>
+            <GoogleOutlined />
             Entre com Google
           </Button>
         </form>

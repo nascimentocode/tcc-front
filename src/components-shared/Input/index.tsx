@@ -15,7 +15,7 @@ const ERROR_CLASSES =
 
 export function Input({ label, error, prepend, ...props }: IInputProps) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="relative flex flex-col gap-1">
       {label && (
         <label className=" font-montserrat text-base font-normal">
           {label}
@@ -36,6 +36,11 @@ export function Input({ label, error, prepend, ...props }: IInputProps) {
           {...props}
         />
       </div>
+      {error && (
+        <p className="text-red-500 absolute bottom-[-24px] text-sm italic">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

@@ -1,9 +1,17 @@
+import { Footer } from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export function PrivateRoutes() {
-  const isAuth = false;
+  const isAuth = localStorage.getItem('auth_token');
 
-  if (!isAuth) return <Navigate to="/login" />;
+  if (isAuth === 'undefined' || !isAuth) return <Navigate to="/login" />;
 
-  return <Outlet />;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
