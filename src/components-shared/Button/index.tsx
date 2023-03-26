@@ -9,7 +9,8 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const VARIANTS = {
   primary: 'bg-primary hover:bg-accent hover:shadow-lg',
   secondary: 'bg-secondary',
-  outlined: 'border-primary border-2 text-primary'
+  outlined:
+    'border-primary border-2 text-primary hover:border-accent hover:text-accent hover:shadow-lg'
 };
 
 export function Button({
