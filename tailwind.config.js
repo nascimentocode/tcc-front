@@ -13,6 +13,9 @@ module.exports = {
     },
     fontFamily: {
       montserrat: ['Montserrat']
+    },
+    backgroundImage: {
+      'login-image': 'url(./src/assets/login-image.png'
     }
   },
   plugins: []

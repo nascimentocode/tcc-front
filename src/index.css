@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply bg-background text-textPrimary;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #b5b3bc;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
 @layer components {
   .title {
     @apply font-montserrat text-5xl font-bold text-textPrimary;
@@ -21,5 +44,9 @@
 
   .text-body-bold {
     @apply font-montserrat text-base font-bold text-textPrimary;
+  }
+
+  .assistive-text-default {
+    @apply font-montserrat text-xs font-normal text-textPrimary;
   }
 }
