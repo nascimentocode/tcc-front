@@ -22,7 +22,12 @@ export function SignUp() {
     },
     validationSchema: SignUpValidation,
     onSubmit(values) {
-      handleSignUp(values.email, values.password);
+      handleSignUp(
+        values.email,
+        values.password,
+        `${values.name} ${values.lastName}`,
+        values.user
+      );
     }
   });
 

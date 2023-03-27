@@ -6,7 +6,7 @@ export function SearchPlayer() {
 
   return (
     <div className="h-screen w-full bg-background">
-      <h1 className="title">Hello world! {currentUser?.email}</h1>
+      <h1 className="text-body-bold">Hello world! {currentUser?.email}</h1>
     </div>
   );
 }

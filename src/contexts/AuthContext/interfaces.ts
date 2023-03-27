@@ -1,11 +1,17 @@
-import { User } from 'firebase/auth';
+import { IUser } from '@/interfaces/Users';
 
 export interface IAuthContext {
-  currentUser: User | null;
-  setCurrentUser: (user: User | null) => void;
-  handleSignUp: (email: string, password: string) => void;
+  currentUser: IUser | null;
+  setCurrentUser: (user: IUser | null) => void;
+  handleSignUp: (
+    email: string,
+    password: string,
+    name: string,
+    userName: string
+  ) => void;
   handleSignInCredentials: (email: string, password: string) => void;
   handleSignInGoogle: () => void;
+  handleLogout: () => void;
 }
 
 export interface IAuthProviderProps {
