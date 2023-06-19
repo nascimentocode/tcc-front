@@ -31,13 +31,13 @@ export function Input({ label, error, prepend, ...props }: IInputProps) {
         {prepend && prepend}
         <input
           className={classnames(
-            'w-full bg-[transparent] placeholder:text-[#FEFDFD70] focus:outline-none focus-visible:outline'
+            'w-full bg-[transparent] placeholder:text-[#FEFDFD70] focus:outline-none focus-visible:outline disabled:cursor-not-allowed'
           )}
           {...props}
         />
       </div>
       {error && (
-        <p className="text-red-500 absolute bottom-[-24px] text-sm italic">
+        <p className="absolute bottom-[-24px] text-sm italic text-red-500">
           {error}
         </p>
       )}

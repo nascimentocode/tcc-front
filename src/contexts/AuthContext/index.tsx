@@ -50,7 +50,7 @@ function AuthProvider({ children }: IAuthProviderProps) {
       })
       .catch((err) => {
         if (err.code === 'auth/email-already-in-use') {
-          ToastError({ message: 'Esse e-mail ja esta sendo utilizado.' });
+          ToastError('Esse e-mail ja esta sendo utilizado.');
         }
       });
   };
@@ -62,7 +62,7 @@ function AuthProvider({ children }: IAuthProviderProps) {
         navigate('/buscar-players');
       })
       .catch(() => {
-        ToastError({ message: 'Algo deu errado! Tente novamente.' });
+        ToastError('Algo deu errado! Tente novamente.');
       });
   };
 
@@ -102,7 +102,7 @@ function AuthProvider({ children }: IAuthProviderProps) {
         );
       })
       .catch(() => {
-        ToastError({ message: 'Algo deu errado! Tente novamente.' });
+        ToastError('Algo deu errado! Tente novamente.');
       });
   };
 

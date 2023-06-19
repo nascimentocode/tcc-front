@@ -1,11 +1,15 @@
+import noPhoto from '@/assets/noPhoto-image.png';
 import { AuthContext } from '@/contexts/AuthContext';
 import { Menu, Transition } from '@headlessui/react';
 import classnames from 'classnames';
 import { Fragment, useContext } from 'react';
-import noPhoto from '../../../../assets/noPhoto-image.png';
+import { useNavigate } from 'react-router-dom';
 
 export function ProfileDropdown() {
+  const navigate = useNavigate();
   const { handleLogout, currentUser } = useContext(AuthContext);
+
+  const handleNaviteToEditProfile = () => navigate('/editar-perfil');
 
   return (
     <Menu as="div" className="relative ml-3">
@@ -33,6 +37,19 @@ export function ProfileDropdown() {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right overflow-hidden rounded-md bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Item>
+            {({ active }) => (
+              <button
+                onClick={handleNaviteToEditProfile}
+                className={classnames(
+                  'block w-full px-4 py-2 text-sm text-textPrimary',
+                  active && 'bg-gray-600'
+                )}
+              >
+                Editar perfil
+              </button>
+            )}
+          </Menu.Item>
           <Menu.Item>
             {({ active }) => (
               <button

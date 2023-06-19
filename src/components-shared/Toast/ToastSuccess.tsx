@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
-import { IToastProps } from './interfaces';
 
-export function ToastSuccess({ message }: IToastProps) {
+export function ToastSuccess(message: string) {
   return toast.success(message, {
     position: 'top-right',
     autoClose: 5000,

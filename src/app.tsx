@@ -12,7 +12,7 @@ import { AppRoutes } from './routes';
 export function App() {
   const navigate = useNavigate();
 
-  const { setCurrentUser } = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -25,11 +25,10 @@ export function App() {
         };
 
         setCurrentUser(userData);
-        navigate('/buscar-players');
         localStorage.setItem('auth_token', user?.refreshToken);
       }
     });
-  }, [setCurrentUser, navigate]);
+  }, [currentUser, setCurrentUser, navigate]);
 
   return (
     <>

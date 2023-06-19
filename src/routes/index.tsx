@@ -1,3 +1,4 @@
+import { EditProfile } from '@/pages/EditProfile';
 import { Login } from '@/pages/Login';
 import { SearchPlayer } from '@/pages/SearchPlayer';
 import { SignUp } from '@/pages/SignUp';
@@ -11,6 +12,7 @@ export function AppRoutes() {
       <Route path="cadastrar" element={<SignUp />} />
       <Route element={<PrivateRoutes />}>
         <Route index path="buscar-players" element={<SearchPlayer />} />
+        <Route path="editar-perfil" element={<EditProfile />} />
       </Route>
       <Route path="*" element={<Navigate to="/buscar-players" replace />} />
     </Routes>

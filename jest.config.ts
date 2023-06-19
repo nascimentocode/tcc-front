@@ -3,7 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
-const assetsKey = '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|css)$'
+const assetsKey =
+  '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|css)$';
 
 const config = {
   // All imported modules in your tests should be mocked automatically
@@ -28,10 +29,7 @@ const config = {
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-    'config/tests',
-  ],
+  coveragePathIgnorePatterns: ['/node_modules/', 'config/tests'],
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
@@ -87,7 +85,7 @@ const config = {
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
     '\\.svg$': '<rootDir>/src/config/tests/mocks/svg.ts',
-    [assetsKey]: 'ts-jest',
+    [assetsKey]: 'ts-jest'
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -180,8 +178,8 @@ const config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     [assetsKey]: 'ts-jest',
-    '\\.svg$': 'ts-jest',
-  },
+    '\\.svg$': 'ts-jest'
+  }
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
@@ -200,6 +198,6 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-}
+};
 
-export default config
+export default config;

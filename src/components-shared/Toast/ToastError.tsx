@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
-import { IToastProps } from './interfaces';
 
-export function ToastError({ message }: IToastProps) {
+export function ToastError(message: string) {
   return toast.error(message, {
     position: 'top-right',
     autoClose: 5000,
