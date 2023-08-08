@@ -17,6 +17,7 @@ export function EditProfile() {
   const { currentUser } = useContext(AuthContext);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       userName: currentUser?.userName ?? '',
       profileImage: currentUser?.profileImage ?? null
@@ -84,23 +85,25 @@ export function EditProfile() {
         <p className="heading-h1">Meus dados</p>
         <div className="h-[1px] w-full bg-textSecondary" />
 
-        <div className="flex items-end gap-4">
-          <div className="relative flex w-1/5 flex-col items-center justify-start gap-3">
-            <img
-              src={formik.values.profileImage || noPhoto}
-              alt="profileImage"
-              className="h-full rounded-full sm:w-4/5"
-            />
-            {formik.values.profileImage && (
-              <button
-                className="absolute bottom-0 right-10 flex h-8 w-8 items-center justify-center rounded-full bg-secondary"
-                onClick={handleClearProfileImage}
-              >
-                <DeleteOutlined />
-              </button>
-            )}
+        <div className="flex flex-col items-end gap-4 sm:flex-row">
+          <div className="flex w-full items-center justify-center gap-3 sm:w-1/5 sm:justify-center">
+            <div className="relative">
+              <img
+                src={formik.values.profileImage || noPhoto}
+                alt="profileImage"
+                className="h-40  rounded-full sm:h-full"
+              />
+              {formik.values.profileImage && (
+                <button
+                  className="absolute right-5 bottom-0 flex h-8 w-8 items-center justify-center rounded-full bg-secondary  "
+                  onClick={handleClearProfileImage}
+                >
+                  <DeleteOutlined />
+                </button>
+              )}
+            </div>
           </div>
-          <div className="flex-1">
+          <div className="w-full">
             <div className="w-full md:w-1/2">
               <Input
                 type="file"

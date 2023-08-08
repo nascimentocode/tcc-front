@@ -2,8 +2,8 @@ import { ToastError } from '@/components-shared/Toast/ToastError';
 import { auth, db } from '@/firebase';
 import { IUser } from '@/interfaces/Users';
 import {
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut
